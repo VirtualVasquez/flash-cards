@@ -1,33 +1,6 @@
 const {gql} = require('apollo-server')
 
 const typeDefs = gql`
-    type Query{
-        getSubjects: [Subject]
-        getSubject(postID: ID!): Subject
-    }
-    # type Mutation{
-    #     reigster(registerInput: RegisterInput): User!
-    #     login(Username: String!, password: String!): User!
-    #     createSubject(title: String!): Subject!
-    #     deleteSubject(subjectId: ID!): String!
-    #     createCard(question: String!, answer: String!): FlashCard!
-    #     deleteCard(cardId: ID!): String!
-    # }
-    "Users that log in an out"
-    type User{
-        id: ID!
-        username: String!
-        token: String!
-        password: String!
-        createdAt: String!
-    }
-    "The needed form to create a user or login"
-    type RegisterInput{
-        username: String!
-        password: String!
-        confirmPassword: String!
-        email: String!
-    }
     "A given collection of flash cards"
     type Subject{
         id: ID!
@@ -38,10 +11,36 @@ const typeDefs = gql`
     }
     "One individual flash card, with one question and one answer"
     type FlashCard{
-        "Do I really need an ID for each flash card?"
         id:ID!
         question: String!
         answer: String!
+    }
+
+    # "Users that log in and out"
+    type User{
+        id: ID!
+        email: String!
+        token: String!
+        username: String!
+        createdAt: String!
+    }
+    # different kind of "type", given as an input to a resolver for it to return something
+    input RegisterInput{
+        username: String!
+        password: String!
+        confirmPassword: String!
+        email: String!
+    }
+    type Query{
+        getSubjects: [Subject]
+        getSubject(postID: ID!): Subject
+    }
+    type Mutation{
+        register(registerInput: RegisterInput): User!
+        login(username: String!, password: String!): User!
+        createSubject(title: String!): Subject!
+        deleteSubject(subjectId:ID!):String!
+        createFlashCard(subjectId:String!, question:String!, answer: String!): FlashCard!
     }
 `
 module.exports = typeDefs;

@@ -5,5 +5,8 @@ module.exports = {
     Query:{
         ...subjectResolvers.Query
     },
+    Mutation:{
+        ...userResolvers.Mutation
+    }
     
 }
