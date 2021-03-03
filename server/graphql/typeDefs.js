@@ -33,7 +33,7 @@ const typeDefs = gql`
     }
     type Query{
         getSubjects: [Subject]
-        getSubject(postID: ID!): Subject
+        getSubject(subjectId: ID!): Subject
     }
     type Mutation{
         register(registerInput: RegisterInput): User!
