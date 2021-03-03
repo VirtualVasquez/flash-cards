@@ -41,6 +41,7 @@ const typeDefs = gql`
         createSubject(title: String!): Subject!
         deleteSubject(subjectId:ID!):String!
         createFlashCard(subjectId:String!, question:String!, answer: String!): FlashCard!
+        deleteFlashCard(flashCardId: ID!): Subject!
     }
 `
 module.exports = typeDefs;
