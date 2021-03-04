@@ -29,7 +29,7 @@ module.exports = {
                         question,
                         answer,
                         username,
-                        createdAt: new Date().toISOString();
+                        createdAt: new Date().toISOString()
                     })
                     await subject.save();
                     return subject

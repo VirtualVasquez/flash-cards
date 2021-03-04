@@ -5,10 +5,11 @@ const typeDefs = gql`
     type Subject{
         id: ID!
         title: String!
+        createdAt: String!
         username: String!
         "this acts as the list of questions and answers"
         flashCards: [FlashCard]
-        flashCardCount:  Int
+        flashCardCount:  Int!
     }
     "One individual flash card, with one question and one answer"
     type FlashCard{
