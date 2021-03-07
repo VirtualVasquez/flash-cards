@@ -8,6 +8,7 @@ const subjectSchema = new Schema({
         {
             question: String,
             answer: String,
+            username: String,
             createdAt: String
         }
     ],
@@ -15,7 +16,6 @@ const subjectSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     }
-    // flashCardCount: Number
 })
 
 module.exports = model('Subject', subjectSchema)

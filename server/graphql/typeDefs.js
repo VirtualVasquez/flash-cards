@@ -8,7 +8,7 @@ const typeDefs = gql`
         createdAt: String!
         username: String!
         "this acts as the list of questions and answers"
-        flashCards: [FlashCard]
+        flashCards: [FlashCard]!
         flashCardCount:  Int!
     }
     "One individual flash card, with one question and one answer"
@@ -16,6 +16,7 @@ const typeDefs = gql`
         id:ID!
         question: String!
         answer: String!
+        createdAt:String!
     }
 
     # "Users that log in and out"
@@ -42,8 +43,8 @@ const typeDefs = gql`
         login(username: String!, password: String!): User!
         createSubject(title: String!): Subject!
         deleteSubject(subjectId:ID!):String!
-        createFlashCard(subjectId:String!, question:String!, answer: String!): FlashCard!
-        deleteFlashCard(flashCardId: ID!): Subject!
+        createFlashCard(subjectId:String!, question:String!, answer: String!): Subject!
+        deleteFlashCard(subjectId: String!, flashCardId: ID!): Subject!
     }
 `
 module.exports = typeDefs;

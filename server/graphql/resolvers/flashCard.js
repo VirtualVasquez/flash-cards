@@ -36,13 +36,13 @@ module.exports = {
                 } else throw new UserInputError('Subject not found')
             },
 
-            async deleteFlashCard(_, {subjectId, question, answer}, context){
+            async deleteFlashCard(_, {subjectId, flashCardId}, context){
                 const {username } = checkAuth(context);
 
                 const subject = await Subject.findById(subjectId)
                 
                 if(subject){
-                    const flashCardIndex = subject.flashCards.findIndex( c => c.id === subjectId);
+                    const flashCardIndex = subject.flashCards.findIndex( c => c.id === flashCardId);
                     if(subject.flashCards[flashCardIndex].username === username){
                         subject.flashCards.splice(flashCardIndex, 1);
                         await subject.save();
