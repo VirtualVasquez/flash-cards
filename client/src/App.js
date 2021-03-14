@@ -1,50 +1,56 @@
 import React from 'react';
-import {BrowserRouter as Router, 
-  Switch, 
-  Route,
-  Link
-} from 'react-router-dom';
+// import {BrowserRouter as Router, 
+//   Switch, 
+//   Route,
+//   Link
+// } from 'react-router-dom';
 import './App.css';
+import Container from 'react-bootstrap/Container';
 
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
+
+import Home from './pages/Home/Home';
+// import FlashCardForm from './pages/FlashCardForm';
+// import Quiz from './pages/Quiz';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-          </ul>
-        </nav>
-        <Switch>
+    // <Router>
+    //   <div>
+    //     <nav>
+    //       <ul>
+    //         <li>
+    //           <Link to="/">Home</Link>
+    //         </li>
+    //         <li>
+    //           <Link to="/FlashCardForm">FlashCardForm</Link>
+    //         </li>
+    //         <li>
+    //           <Link to="/Quiz">Quiz</Link>
+    //         </li>
 
-          <Route exact path="/">
-            <Home />
-          </Route>
+    //       </ul>
+    //     </nav>
+    //     <Switch>
 
-          <Route path="/login">
-            <Login />
-          </Route>
+    //       <Route exact path="/">
+    //         <Home />
+    //       </Route>
 
-          <Route path="/register">
-            <Register />
-          </Route>
+    //       <Route path="/FlashCardForm">
+    //         <FlashCardForm />
+    //       </Route>
+
+    //       <Route path="/Quiz">
+    //         <Quiz />
+    //       </Route>
           
-        </Switch>
-      </div>
+    //     </Switch>
+    //   </div>
 
-    </Router>
+    // </Router>
+    <Container className="vertical-center text-center">
+    <Home />
+    </Container>
   );
 }
 
