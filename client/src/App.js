@@ -5,7 +5,6 @@ import React from 'react';
 //   Link
 // } from 'react-router-dom';
 import './App.css';
-import Container from 'react-bootstrap/Container';
 
 
 import Home from './pages/Home/Home';
@@ -48,9 +47,9 @@ function App() {
     //   </div>
 
     // </Router>
-    <Container className="vertical-center text-center">
+    // <Container className="vertical-center text-center">
     <Home />
-    </Container>
+    // </Container>
   );
 }
 
