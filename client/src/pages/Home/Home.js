@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 
 // import LoginForm from '../../components/LoginForm'
 import HomeNav from '../../components/HomeNav'
+import Subject from '../../components/Subject'
 import './Home.css';
 
 function Home(){
@@ -18,7 +19,7 @@ function Home(){
             <HomeNav/>
             <Container fluid>
                 <Row>
-                    <h1>Hello</h1>
+                    <Subject />
                 </Row>
             </Container>
         </div>
