@@ -8,7 +8,8 @@ import './App.css';
 
 
 import Home from './pages/Home/Home';
-// import FlashCardForm from './pages/FlashCardForm';
+import SubjectForm from './pages/SubjectForm/SubjectForm';
+import Nav from './components/Nav'
 // import Quiz from './pages/Quiz';
 
 function App() {
@@ -47,9 +48,10 @@ function App() {
     //   </div>
 
     // </Router>
-    // <Container className="vertical-center text-center">
-    <Home />
-    // </Container>
+    <div>
+      <Home/>
+      {/* <SubjectForm/> */}
+    </div>
   );
 }
 
