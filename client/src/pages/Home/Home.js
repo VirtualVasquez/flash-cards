@@ -36,7 +36,7 @@ function Home(){
                         <Button className="login-form-button" type="submit" variant="primary">Sign in</Button>
                     </Col>
                     <Col sm={3}>
-                        <Button className="create-form-button" variant="success" onClick={() => setModalShow(true)}>Create Account</Button>
+                        <Button className="login-form-button" variant="success" onClick={() => setModalShow(true)}>Create Account</Button>
 
                         <RegisterForm 
                             show={modalShow}
