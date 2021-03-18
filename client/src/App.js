@@ -1,4 +1,5 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 // import {BrowserRouter as Router, 
 //   Switch, 
 //   Route,
@@ -10,7 +11,7 @@ import './App.css';
 import Home from './pages/Home/Home';
 import SubjectForm from './pages/SubjectForm/SubjectForm';
 import Nav from './components/Nav'
-// import Quiz from './pages/Quiz';
+import Quiz from './pages/Quiz/Quiz';
 
 function App() {
   return (
@@ -48,10 +49,11 @@ function App() {
     //   </div>
 
     // </Router>
-    <div>
-      {/* <Home/> */}
-      <SubjectForm/>
-    </div>
+
+    <Container id="main-container">
+      <Nav/>
+      <Quiz/>
+    </Container>
   );
 }
 

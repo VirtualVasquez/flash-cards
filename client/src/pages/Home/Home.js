@@ -14,6 +14,7 @@ function Home(){
     return(
         <div>
             <Nav/>
+
             <Container fluid>
 
                 <Row  style={{margin:"20px"}}>
