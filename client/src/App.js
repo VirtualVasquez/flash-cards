@@ -53,7 +53,7 @@ function App() {
     <Container id="main-container">
       {/* ONLY render nav if logged in */}
       <Nav/> 
-      <Home/>
+      <Quiz/>
     </Container>
   );
 }
