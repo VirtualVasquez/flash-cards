@@ -49,8 +49,8 @@ function App() {
 
     // </Router>
     <div>
-      <Home/>
-      {/* <SubjectForm/> */}
+      {/* <Home/> */}
+      <SubjectForm/>
     </div>
   );
 }
