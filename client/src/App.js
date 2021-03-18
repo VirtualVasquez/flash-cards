@@ -51,8 +51,9 @@ function App() {
     // </Router>
 
     <Container id="main-container">
-      <Nav/>
-      <Quiz/>
+      {/* ONLY render nav if logged in */}
+      <Nav/> 
+      <Home/>
     </Container>
   );
 }

@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col'
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
 
 import RegisterForm from './RegisterForm'
 
@@ -11,7 +12,12 @@ function Home(){
     const [showCreateAccount, setShowCreateAccount] = React.useState(false);    
 
     return(
-        <Jumbotron>
+        <Container style={{
+            minHeight: "100%",
+            minHeight: "100vh",
+            display: "flex",
+            alignItems: "center"}}>
+        <Jumbotron className="text-center" >
             <h1>Flash Cards</h1>
             <Form>                
                 <Form.Group as={Row} controlId="formHorizontalEmail">
@@ -41,9 +47,9 @@ function Home(){
                         />
                     </Col>
                 </Form.Group>
-
             </Form>
         </Jumbotron>
+        </Container>
     )
 }
 
