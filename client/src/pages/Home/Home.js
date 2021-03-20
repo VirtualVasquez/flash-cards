@@ -12,8 +12,8 @@ function Home(){
 
     return(
         <Container fluid>
-            {/* <LoginForm/> */}
-            <Row  style={{margin:"20px"}}>
+            <LoginForm/>
+            {/* <Row  style={{margin:"20px"}}>
                 <Subject />
             </Row>
             <Row className="justify-content-center">
@@ -25,7 +25,7 @@ function Home(){
                         bottom:"0",
                         margin: "2em"}}>+ Create New Subject
                 </Button>
-            </Row>
+            </Row> */}
         </Container>
     )
 }

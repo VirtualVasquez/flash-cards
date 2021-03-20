@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
 function RegisterForm(props){
+    const [values, setValues] = useState({
+        username:'',
+        email:'',
+        password:'',
+        confirmPassword:''
+    })
+
     return(
         <Modal
             {...props}
@@ -18,7 +25,7 @@ function RegisterForm(props){
             </Modal.Header>
             
             <Modal.Body>
-            <Form>
+            <Form onSubmit={onSubmit} noValidate>
 
                 <Form.Group controlId="formBasicUsername">
                     <Form.Label>Username</Form.Label>
