@@ -10,7 +10,7 @@ import './App.css';
 
 import Home from './pages/Home/Home';
 import SubjectForm from './pages/SubjectForm/SubjectForm';
-import Nav from './components/Nav'
+// import Nav from './components/Nav'
 import Quiz from './pages/Quiz/Quiz';
 
 
