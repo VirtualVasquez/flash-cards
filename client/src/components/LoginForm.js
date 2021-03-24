@@ -44,6 +44,7 @@ function Home(){
                         <RegisterForm 
                             show={showCreateAccount}
                             onHide={() => setShowCreateAccount(false)}
+                            setShowCreateAccount={setShowCreateAccount}
                         />
                     </Col>
                 </Form.Group>
