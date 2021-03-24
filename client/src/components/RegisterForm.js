@@ -4,39 +4,39 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { gql, useMutation } from '@apollo/client';
 
+import {useForm} from '../util/hooks'
+
 function RegisterForm(props){
     const [errors, setErrors] = useState({})
-    const [values, setValues] = useState({
+    //useForm(callback, initialState)
+    //function registerUser() created to hoist up addUser()
+    //addUser wouldn't be reconigzed otherwise
+    const {onChange, onSubmit, values} = useForm(registerUser, {
         username:'',
         email:'',
         password:'',
         confirmPassword:''
     })
-
-    const onChange = (event) =>{
-        setValues({...values,[event.target.name]:event.target.value})
-    }
     
     // The useMutation React hook is the primary API for executing mutations in an Apollo application.
     //To run a mutation, you first call useMutation within a React component and pass it a GraphQL string that represents the mutation. When your component renders, useMutation returns a tuple that includes:
     const [addUser, {loading}] = useMutation(REGISTER_USER, {
         update(_, result){
             console.log(result);
-            {props.setShowCreateAccount(false)}
+            {props.setShowCreateAccount(false)}//hide modal after successful user register
+
             //this is from the tutorial, but registerform is a part of '/'
-            //instead, change rendering condition of <Home /> to show dashboard
-            // props.history.push('/')
+                //instead, change rendering condition of <Home /> to show dashboard
+                // props.history.push('/')
         },
         onError(err){
-            console.log(err.graphQLErrors[0].extensions.exception.errors)
             setErrors(err.graphQLErrors[0].extensions.exception.errors)
         },
         variables:values
     })
 
-    const onSubmit = (event) =>{
-        event.preventDefault();
-        addUser();//invokes the useMutation function we created on line 22
+    function registerUser(){
+        addUser();
     }
 
     return(
