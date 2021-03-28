@@ -16,7 +16,7 @@ function SubjectForm(){
         <FlashCard/>
     )
     return(
-        <div>
+        <Container fluid>
             <Nav/>
             <Container >
             <Form>
@@ -38,7 +38,7 @@ function SubjectForm(){
             </Form>
             </Container>
 
-        </div>
+        </Container>
     )
 }
 
