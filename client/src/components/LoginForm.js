@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 import Jumbotron from 'react-bootstrap/Jumbotron';
@@ -9,10 +9,12 @@ import { gql, useMutation } from '@apollo/client';
 
 
 import RegisterForm from './RegisterForm'
+import {AuthContext} from '../context/auth'
 import {useForm} from '../util/hooks'
 
 function LoginForm(props){
-    const [showCreateAccount, setShowCreateAccount] = React.useState(false);
+    const context = useContext(AuthContext);
+    const [showCreateAccount, setShowCreateAccount] = React.useState(false);//for modal
     const [errors, setErrors] = useState({});
     
     const {onChange, onSubmit, values} = useForm(loginUserCallback, {
@@ -21,8 +23,9 @@ function LoginForm(props){
     })
 
     const [loginUser, {loading}] = useMutation(LOGIN_USER, {
-        update(_, result) {
-            console.log(result);
+        update(_, {data:{login:userData}}) {
+            console.log(userData);
+            context.login(userData)
         },
         onError(err){
             setErrors(err.graphQLErrors[0].extensions.exception.errors)

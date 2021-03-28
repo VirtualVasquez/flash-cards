@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { gql, useMutation } from '@apollo/client';
 
+import {AuthContext} from '../context/auth'
 import {useForm} from '../util/hooks'
 
 function RegisterForm(props){
+    const context = useContext(AuthContext)
     const [errors, setErrors] = useState({})
     //useForm(callback, initialState)
     //function registerUser() created to hoist up addUser()
@@ -21,13 +23,10 @@ function RegisterForm(props){
     // The useMutation React hook is the primary API for executing mutations in an Apollo application.
     //To run a mutation, you first call useMutation within a React component and pass it a GraphQL string that represents the mutation. When your component renders, useMutation returns a tuple that includes:
     const [addUser, {loading}] = useMutation(REGISTER_USER, {
-        update(_, result){
-            console.log(result);
+        update(_, {data:{register:userData}}){
+            console.log(userData);
+            context.login(userData)
             {props.setShowCreateAccount(false)}//hide modal after successful user register
-
-            //this is from the tutorial, but registerform is a part of '/'
-                //instead, change rendering condition of <Home /> to show dashboard
-                // props.history.push('/')
         },
         onError(err){
             setErrors(err.graphQLErrors[0].extensions.exception.errors)

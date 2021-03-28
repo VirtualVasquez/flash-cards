@@ -1,19 +1,17 @@
-import React from 'react';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
+import React, {useContext, useReducer, useState} from 'react';
 
+import {AuthContext} from '../../context/auth'
 import Dashboard from '../../components/Dashboard'
 import LoginForm from '../../components/LoginForm'
 
 import './Home.css';
 
 function Home(){
+    const {user, logout} = useContext(AuthContext);
 
-    return(
-        <LoginForm/>
-        // <Dashboard/>
-    )
+    const home = user ? <Dashboard/> : <LoginForm />
+
+    return home;
 }
 
 export default Home; 
