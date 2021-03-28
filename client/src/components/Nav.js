@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react';
 import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom'
 
 import {AuthContext} from '../context/auth'
 
@@ -12,7 +13,13 @@ function HomeNav(){
 
     return(
         <Navbar bg="dark" variant="dark" expand="xs">
-        <Navbar.Brand href="#home">FlashCards</Navbar.Brand>
+        <Navbar.Brand
+            name='home'
+            as={Link}
+            to='/'
+        >
+            FlashCards
+        </Navbar.Brand>
         <Nav.Item className="justify-content-end">
             <Button variant="danger"
                 name="logout"
