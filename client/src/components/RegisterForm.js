@@ -22,7 +22,8 @@ function RegisterForm(props){
     
     // The useMutation React hook is the primary API for executing mutations in an Apollo application.
     //To run a mutation, you first call useMutation within a React component and pass it a GraphQL string that represents the mutation. When your component renders, useMutation returns a tuple that includes:
-    const [addUser, {loading}] = useMutation(REGISTER_USER, {
+    // const [addUser, {loading}] = useMutation(REGISTER_USER, {
+    const [addUser] = useMutation(REGISTER_USER, {
         update(_, {data:{register:userData}}){
             console.log(userData);
             context.login(userData)

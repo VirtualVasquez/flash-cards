@@ -21,8 +21,8 @@ function LoginForm(props){
         username:'',
         password:''
     })
-
-    const [loginUser, {loading}] = useMutation(LOGIN_USER, {
+    // const [loginUser, {loading}] = useMutation(LOGIN_USER, {
+    const [loginUser] = useMutation(LOGIN_USER, {
         update(_, {data:{login:userData}}) {
             console.log(userData);
             context.login(userData)
@@ -40,7 +40,7 @@ function LoginForm(props){
     return(
         <Container style={{
             minHeight: "100%",
-            minHeight: "100vh",
+            // minHeight: "100vh",
             display: "flex",
             alignItems: "center"}}>
         <Jumbotron className="text-center" >

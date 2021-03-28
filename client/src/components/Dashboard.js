@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -15,7 +15,7 @@ function Dashboard(){
         <Container fluid>
             <Nav/>
             <Row  style={{margin:"20px"}}>
-                <Subject />
+                {/* <Subject /> */}
             </Row>
             <Row className="justify-content-center">
                 <Button  
@@ -28,7 +28,8 @@ function Dashboard(){
                         position:"absolute",
                         bottom:"0",
                         margin: "2em"}}
-                >+ Create New Subject
+                >
+                    + Create New Subject
                 </Button>
             </Row>
         </Container>
