@@ -21,9 +21,8 @@ function SubjectForm(){
             <Nav/>
             <Container >
             <Form>
-                <h1>Subject Name</h1>
+                <h1>Subject Name (Create a subject and it's flashcards)</h1>
                 {displayFlashCards}
-
                 <Button 
                     variant="success"
                     onClick={() => setFlashCards(flashCards => [...flashCards,{question:'', answer:''}])}

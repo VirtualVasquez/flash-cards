@@ -2,15 +2,14 @@ import React, {useContext} from 'react';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
-import {Link} from 'react-router-dom'
 
 import {AuthContext} from '../context/auth'
-
+import SubjectForm from './SubjectForm'
 import Subject from './Subject';
 import Nav from './Nav';
 
 function Dashboard(){
-    const { user} = useContext(AuthContext);
+    const [showCreateSubject, setshowcreatesubject] = React.useState(false);//for modal
     return(
         <Container fluid>
             <Nav/>
@@ -19,9 +18,8 @@ function Dashboard(){
             </Row>
             <Row className="justify-content-center">
                 <Button  
-                    variant="success" 
-                    as={Link}
-                    to="/subjectForm"
+                    variant="success"
+                    onClick={()=>setshowcreatesubject(true)} 
                     style={{
                         float:"right", 
                         fontSize:"2em",
@@ -31,6 +29,11 @@ function Dashboard(){
                 >
                     + Create New Subject
                 </Button>
+                <SubjectForm
+                    show={showCreateSubject}
+                    onHide={()=> setshowcreatesubject(false)}
+                    setshowcreatesubject={setshowcreatesubject}
+                />
             </Row>
         </Container>
     )
