@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/esm/Dropdown';
 
-function Subject(){
+function Subject(props){
 
     return(
         <Col sm="4" md="3">
@@ -17,7 +17,7 @@ function Subject(){
                     </DropdownButton>
                 </Card.Header>
                 <Card.Body>
-                    <Card.Title>Subject Name</Card.Title>
+                    <Card.Title>{props.title}</Card.Title>
                     <Button variant="primary">Start Quiz</Button>
                 </Card.Body>
             </Card>

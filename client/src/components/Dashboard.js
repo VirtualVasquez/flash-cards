@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import {useQuery, gql} from '@apollo/client';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -9,12 +10,23 @@ import Subject from './Subject';
 import Nav from './Nav';
 
 function Dashboard(){
+    const { loading, data:{getSubjects:subjects}} = useQuery(FETCH_SUBJECTS_QUERY);
+
+    if(subjects){
+        console.log(subjects)
+    }
     const [showCreateSubject, setshowcreatesubject] = React.useState(false);//for modal
     return(
         <Container fluid>
             <Nav/>
             <Row  style={{margin:"20px"}}>
-                {/* <Subject /> */}
+            {loading ? (
+                    <h1>Loading Subjects...</h1>
+                ) : (
+                    subjects && subjects.map(subject=>(
+                        <Subject title={subject.title} key={subject.key}/>
+                    ))
+                )}
             </Row>
             <Row className="justify-content-center">
                 <Button  
@@ -38,5 +50,13 @@ function Dashboard(){
         </Container>
     )
 }
+
+const FETCH_SUBJECTS_QUERY = gql`
+    {
+        getSubjects{
+            title username id
+        }
+    }
+`
     
 export default Dashboard; 
