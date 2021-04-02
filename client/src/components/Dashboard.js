@@ -1,16 +1,22 @@
 import React, {useContext} from 'react';
-import {useQuery, gql} from '@apollo/client';
+import {useQuery} from '@apollo/client';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
 import {AuthContext} from '../context/auth'
-import SubjectForm from './SubjectForm'
+import NewSubject from './NewSubject'
 import Subject from './Subject';
 import Nav from './Nav';
+import {FETCH_SUBJECTS_QUERY} from '../util/graphql';
 
 function Dashboard(){
-    const { loading, data:{getSubjects:subjects}} = useQuery(FETCH_SUBJECTS_QUERY);
+    const {user} = useContext(AuthContext)
+
+    const {
+        loading, 
+        data:{getSubjects:subjects} = {}
+    } = useQuery(FETCH_SUBJECTS_QUERY);
 
     if(subjects){
         console.log(subjects)
@@ -41,7 +47,7 @@ function Dashboard(){
                 >
                     + Create New Subject
                 </Button>
-                <SubjectForm
+                <NewSubject
                     show={showCreateSubject}
                     onHide={()=> setshowcreatesubject(false)}
                     setshowcreatesubject={setshowcreatesubject}
@@ -51,12 +57,6 @@ function Dashboard(){
     )
 }
 
-const FETCH_SUBJECTS_QUERY = gql`
-    {
-        getSubjects{
-            title username id
-        }
-    }
-`
+
     
 export default Dashboard; 
