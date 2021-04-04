@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useState} from 'react';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -67,7 +67,7 @@ function NewSubject(props){
                     />
                 </Form.Group>
 
-                <Button 
+                <Button
                     variant="primary" 
                     type="submit"
                 >
@@ -75,6 +75,7 @@ function NewSubject(props){
                 </Button>
 
             </Form>
+
 
             </Modal.Body>
         </Modal>

@@ -6,17 +6,13 @@ import Button from 'react-bootstrap/Button';
 
 import {AuthContext} from '../context/auth'
 import NewSubject from './NewSubject'
-import Subject from './Subject';
+import SubjectCard from './SubjectCard';
 import Nav from './Nav';
 import {FETCH_SUBJECTS_QUERY} from '../util/graphql';
 
 function Dashboard(){
     const {user} = useContext(AuthContext)
-
-    const {
-        loading, 
-        data:{getSubjects:subjects} = {}
-    } = useQuery(FETCH_SUBJECTS_QUERY);
+    const {loading, data:{getSubjects:subjects} = {}} = useQuery(FETCH_SUBJECTS_QUERY);
 
     if(subjects){
         console.log(subjects)
@@ -30,7 +26,7 @@ function Dashboard(){
                     <h1>Loading Subjects...</h1>
                 ) : (
                     subjects && subjects.map(subject=>(
-                        <Subject title={subject.title} key={subject.key}/>
+                        <SubjectCard subject={subject}/>
                     ))
                 )}
             </Row>
@@ -41,7 +37,6 @@ function Dashboard(){
                     style={{
                         float:"right", 
                         fontSize:"2em",
-                        position:"absolute",
                         bottom:"0",
                         margin: "2em"}}
                 >

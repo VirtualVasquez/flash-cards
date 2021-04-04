@@ -20,8 +20,8 @@ function App() {
       <Router>
         <Container>
           <Route exact path="/" component={Home}/>
-          <Route exact path="/subjectForm" component={SubjectForm}/>
           <Route exact path="/quiz" component={Quiz}/>
+          <Route exact path="/subjects/:subjectId" component={SubjectForm}/>
         </Container>
       </Router>
     </AuthProvider>
