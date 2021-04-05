@@ -2,7 +2,7 @@ import React from 'react'
 import Form from 'react-bootstrap/form'
 import Button from 'react-bootstrap/Button'
 
-function FlashCard(){
+function SubjectFormGroup(){
     //enter subjectID, return flashcards arr
     //Create, Read, Update, and Delete Flashcards
 
@@ -20,4 +20,4 @@ function FlashCard(){
     )
 }
 
-export default FlashCard; 
+export default SubjectFormGroup; 

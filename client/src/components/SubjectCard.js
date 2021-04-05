@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
-
 import {PencilSquare, Trash} from 'react-bootstrap-icons'
+
+import {AuthContext} from '../context/auth'
+import DeleteButton from './DeleteButton';
 
 function Subject({
     subject:{title, createdAt, id, username, flashCardCount}
 }){
+    const {user} = useContext(AuthContext);
 
     return(
         <Col sm="4" md="3">
@@ -18,12 +21,11 @@ function Subject({
                         variant="secondary"
                         as={Link}
                         to={`/subjects/${id}`}
+                        id={id}
                     >
                         <PencilSquare/>
                     </Button>
-                    <Button variant="danger">
-                        <Trash/>
-                    </Button>
+                    <DeleteButton subjectId={id}/>
 
                 </Card.Header>
                 <Card.Body>
