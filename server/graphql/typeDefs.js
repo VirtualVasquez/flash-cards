@@ -43,8 +43,8 @@ const typeDefs = gql`
         login(username: String!, password: String!): User!
         createSubject(title: String!): Subject!
         deleteSubject(subjectId:ID!):String!
-        createFlashCard(subjectId:String!, question:String!, answer: String!): Subject!
-        deleteFlashCard(subjectId: String!, flashCardId: ID!): Subject!
+        createFlashCard(subjectId:ID!, question:String!, answer: String!): Subject!
+        deleteFlashCard(subjectId: ID!, flashCardId: ID!): Subject!
     }
 `
 module.exports = typeDefs;
