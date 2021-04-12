@@ -4,12 +4,13 @@ import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 import Nav from '../../components/Nav'
 import DeleteButton from '../../components/DeleteButton';
 
 function SubjectForm(props){
-
     const subjectId=props.match.params.subjectId;
     // console.log(subjectId)
     const [flashQuestion, setFlashQuestion] = useState('')
@@ -18,7 +19,7 @@ function SubjectForm(props){
     const {data, loading, error} = useQuery(FETCH_SUBJECT_QUERY, {variables:{subjectId}});
     // console.log(JSON.stringify(error, null, 2))
 
-    const [submitFlashCard] = useMutation(SUBMIT_FLASHCARD_MUTATION, {
+    const [submitFlashCard, {loading:mutationLoading, error:mutationError}] = useMutation(SUBMIT_FLASHCARD_MUTATION, {
         update(){
             setFlashQuestion('')
             setFlashAnswer('')
@@ -47,12 +48,18 @@ function SubjectForm(props){
             <h1>{title}</h1>
             <DeleteButton subjectId={id} callback={deleteSubjectCallback}/>
         </Row>
-        <Form style={{
+        <Form 
+            onSubmit={e => {
+                e.preventDefault();
+                submitFlashCard();
+            }}
+            style={{
                 border: "solid 1px black",
                 padding: "1em",
                 margin: "1em"}}>
+            <p>Add FlashCard</p>
             <Form.Group controlId="formQuestion">
-                <Form.Label>Question<Button variant='danger'>DELETE</Button></Form.Label>
+            <Form.Label>Question</Form.Label>
                 <Form.Control 
                     type="text" 
                     placeholder="Write your question here"
@@ -74,33 +81,29 @@ function SubjectForm(props){
             <Button 
                 variant="primary" 
                 type="submit"
-                // disabled={flashQuestion.trim() ==='' && flashAnswer.trim()===''}
-                onClick={submitFlashCard}
+                disabled={!flashQuestion.trim() && !flashAnswer.trim()}
             >
                 Submit
             </Button>
         </Form>
-            
+        {/* {mutationLoading && <p>Loading...</p>}
+        {mutationError && console.log(JSON.stringify(mutationError, null, 2))} */}
 
-            {flashCards.map((flashcard, index) => ( 
-                <div>
-                    <p>{flashcard.id}</p>
-                    <p>{flashcard.question}</p>
-                    <p>{flashcard.answer}</p>
-                </div>
-                // <Form.Group key={flashcard.id} style={{
-                //     border: "solid 1px black",
-                //     padding: "1em",
-                //     margin: "1em"}}
-                // >
-                    
-                //     <Form.Label>Question {index} <Button variant='danger'>DELETE</Button></Form.Label>
-                //     <Form.Control type="question" placeholder="Write your question here" value={flashcard.question}/>
-                //     <Form.Label>Answer {index} </Form.Label>
-                //     <Form.Control type="answer" placeholder="Write your answer here" value={flashcard.answer}></Form.Control>
-                //     <DeleteButton subjectId={id} flashCardId={flashcard.id}/>
-                // </Form.Group>
+            
+        <Container>
+        {flashCards.map((flashcard, index) => (
+                <Card key={flashcard.id} style={{marginBottom:"10px"}}>
+                    {/* <Card.Header>Question #{index+1}</Card.Header> */}
+                    <ListGroup variant="flush">
+                        <ListGroup.Item><strong>Question #{index+1}</strong> <DeleteButton subjectId={id} flashCardId={flashcard.id}/></ListGroup.Item>
+                        <ListGroup.Item>{flashcard.question}</ListGroup.Item>
+                        <ListGroup.Item><strong>Answer</strong></ListGroup.Item>
+                        <ListGroup.Item>{flashcard.answer}</ListGroup.Item>
+                    </ListGroup>
+                </Card>
             ))}
+        </Container>
+
 
 
         </Container>
@@ -110,8 +113,8 @@ function SubjectForm(props){
 }
 
 const SUBMIT_FLASHCARD_MUTATION = gql`
-    mutation($flashCardId:ID!, $question: String!, $answer: String!){
-        createFlashCard(flashCardId:$flashCardId, question: $question, answer: $answer){
+    mutation($subjectId:ID!, $question: String!, $answer: String!){
+        createFlashCard(subjectId:$subjectId, question: $question, answer: $answer){
             id
             flashCards{
                 id

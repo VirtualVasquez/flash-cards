@@ -1,16 +1,17 @@
-import React, {useState, useContext} from 'react';
+import React from 'react';
 import { gql, useMutation } from '@apollo/client';
 import {Trash} from 'react-bootstrap-icons'
 import Button from 'react-bootstrap/Button'
 import Popover from 'react-bootstrap/Popover'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Form from 'react-bootstrap/Form'
 import { FETCH_SUBJECTS_QUERY } from '../util/graphql';
 
 function DeleteButton({subjectId, flashCardId, callback}){
 
     const mutation = flashCardId ? DELETE_FLASHCARD_MUTATION : DELETE_SUBJECT_MUTATION;
 
-    const [deleteSubjectOrFlashCard] = useMutation(mutation, {
+    const [deleteSubjectOrFlashCard, {loading:mutationLoading, error:mutationError}] = useMutation(mutation, {
         update(proxy){
             document.body.click()
             if(!flashCardId){
@@ -33,8 +34,16 @@ function DeleteButton({subjectId, flashCardId, callback}){
         <Popover id="popover-basic">
           <Popover.Title as="h3">Are you sure?</Popover.Title>
           <Popover.Content>
-              <Button onClick={deleteSubjectOrFlashCard}>Yes</Button>
+            <Form 
+                onSubmit={e => {
+                    e.preventDefault();
+                    deleteSubjectOrFlashCard();
+                }}
+            >
+              <Button type="submit">Yes</Button>
               <Button variant="secondary" onClick={() => document.body.click()}>No</Button>
+            </Form>
+
           </Popover.Content>
         </Popover>
       );
