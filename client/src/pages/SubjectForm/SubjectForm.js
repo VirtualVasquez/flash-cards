@@ -19,8 +19,7 @@ function SubjectForm(props){
     const {data, loading, error} = useQuery(FETCH_SUBJECT_QUERY, {variables:{subjectId}});
     // console.log(JSON.stringify(error, null, 2))
 
-    // const [submitFlashCard, {loading:mutationLoading, error:mutationError}] = useMutation(SUBMIT_FLASHCARD_MUTATION, {
-    const [submitFlashCard] = useMutation(SUBMIT_FLASHCARD_MUTATION, {
+    const [submitFlashCard, {loading:mutationLoading, error:mutationError}] = useMutation(SUBMIT_FLASHCARD_MUTATION, {
         update(){
             setFlashQuestion('')
             setFlashAnswer('')
@@ -35,9 +34,7 @@ function SubjectForm(props){
     if(loading) return 'Loading...';
     if(error) return `Error! ${error.message}`;
 
-    // const {id, title, username, createdAt, flashCards, flashCardCount } = data.getSubject;
-    const {id, title, flashCards } = data.getSubject;
-
+    const {id, title, username, createdAt, flashCards, flashCardCount } = data.getSubject;
 
     function deleteSubjectCallback() {
         props.history.push('/');
@@ -89,8 +86,8 @@ function SubjectForm(props){
                 Submit
             </Button>
         </Form>
-        {/* {mutationLoading && <p>Loading...</p>}
-        {mutationError && console.log(JSON.stringify(mutationError, null, 2))} */}
+        {mutationLoading && <p>Loading...</p>}
+        {mutationError && console.log(JSON.stringify(mutationError, null, 2))}
 
             
         <Container>

@@ -14,7 +14,7 @@ import {useForm} from '../util/hooks'
 
 function LoginForm(props){
     const context = useContext(AuthContext);
-    const [showCreateAccount, setshowcreateaccount] = React.useState(false);//for modal
+    const [showCreateAccount, setShowCreateAccount] = React.useState(false);//for modal
     const [errors, setErrors] = useState({});
     
     const {onChange, onSubmit, values} = useForm(loginUserCallback, {
@@ -80,12 +80,12 @@ function LoginForm(props){
                         <Button className="login-form-button" type="submit" variant="primary">Login</Button>
                     </Col>
                     <Col sm={3}>
-                        <Button className="login-form-button" variant="success" onClick={() => setshowcreateaccount(true)}>Create Account</Button>
+                        <Button className="login-form-button" variant="success" onClick={() => setShowCreateAccount(true)}>Create Account</Button>
 
                         <RegisterForm 
                             show={showCreateAccount}
-                            onHide={() => setshowcreateaccount(false)}
-                            setshowcreateaccount={setshowcreateaccount}
+                            onHide={() => setShowCreateAccount(false)}
+                            setShowCreateAccount={setShowCreateAccount}
                         />
                     </Col>
                 </Form.Group>

@@ -1,24 +1,25 @@
-import React from 'react';
-// import React, {useContext} from 'react';
+import React, {useContext} from 'react';
 import {useQuery} from '@apollo/client';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
-// import {AuthContext} from '../context/auth'
+import {AuthContext} from '../context/auth'
 import NewSubject from './NewSubject'
 import SubjectCard from './SubjectCard';
 import Nav from './Nav';
 import {FETCH_SUBJECTS_QUERY} from '../util/graphql';
 
 function Dashboard(){
-    // const {user} = useContext(AuthContext)
+    const {user} = useContext(AuthContext)
     const {loading, data:{getSubjects:subjects} = {}} = useQuery(FETCH_SUBJECTS_QUERY);
 
     if(subjects){
         console.log(subjects)
     }
-    const [showCreateSubject, setshowcreatesubject] = React.useState(false);//for modal
+    const [showCreateSubject, setShowCreateSubject] = React.useState(false);//for modal
+    const handleClose = () => setShowCreateSubject(false);
+
     return(
         <Container fluid>
             <Nav/>
@@ -34,7 +35,7 @@ function Dashboard(){
             <Row className="justify-content-center">
                 <Button  
                     variant="success"
-                    onClick={()=>setshowcreatesubject(true)} 
+                    onClick={()=>setShowCreateSubject(true)} 
                     style={{
                         float:"right", 
                         fontSize:"2em",
@@ -45,8 +46,8 @@ function Dashboard(){
                 </Button>
                 <NewSubject
                     show={showCreateSubject}
-                    onHide={()=> setshowcreatesubject(false)}
-                    setshowcreatesubject={setshowcreatesubject}
+                    onHide={handleClose}
+                    onSubmit={handleClose}
                 />
             </Row>
         </Container>

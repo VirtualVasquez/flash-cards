@@ -11,7 +11,7 @@ function DeleteButton({subjectId, flashCardId, callback}){
 
     const mutation = flashCardId ? DELETE_FLASHCARD_MUTATION : DELETE_SUBJECT_MUTATION;
 
-    const [deleteSubjectOrFlashCard, {error:mutationError}] = useMutation(mutation, {
+    const [deleteSubjectOrFlashCard, {loading:mutationLoading, error:mutationError}] = useMutation(mutation, {
         update(proxy){
             document.body.click()
             if(!flashCardId){
