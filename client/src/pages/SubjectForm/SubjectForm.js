@@ -86,8 +86,8 @@ function SubjectForm(props){
                 Submit
             </Button>
         </Form>
-        {/* {mutationLoading && <p>Loading...</p>}
-        {mutationError && console.log(JSON.stringify(mutationError, null, 2))} */}
+        {mutationLoading && <p>Loading...</p>}
+        {mutationError && console.log(JSON.stringify(mutationError, null, 2))}
 
             
         <Container>

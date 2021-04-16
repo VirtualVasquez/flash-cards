@@ -37,6 +37,7 @@ function DeleteButton({subjectId, flashCardId, callback}){
             <Form 
                 onSubmit={e => {
                     e.preventDefault();
+                    console.log(JSON.stringify(mutationError, null, 2));
                     deleteSubjectOrFlashCard();
                 }}
             >
@@ -65,8 +66,8 @@ const DELETE_SUBJECT_MUTATION = gql`
     }
 `
 const DELETE_FLASHCARD_MUTATION = gql`
-    mutation deleteFlashcard($flashCardId:ID!, $subjectId:ID!){
-        deleteFlashcard(flashCardId:$flashCardId, subjectId: $subjectId){
+    mutation deleteFlashCard($flashCardId:ID!, $subjectId:ID!){
+        deleteFlashCard(flashCardId:$flashCardId, subjectId: $subjectId){
             id
             flashCards{
                 id
