@@ -1,17 +1,18 @@
-import React, {useContext} from 'react';
+import React from 'react';
+// import React, {useContext} from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
-import {PencilSquare, Trash} from 'react-bootstrap-icons'
+import {PencilSquare} from 'react-bootstrap-icons'
 
-import {AuthContext} from '../context/auth'
+// import {AuthContext} from '../context/auth'
 import DeleteButton from './DeleteButton';
 
 function Subject({
     subject:{title, createdAt, id, username, flashCardCount}
 }){
-    const {user} = useContext(AuthContext);
+    // const {user} = useContext(AuthContext);
 
     return(
         <Col sm="4" md="3">

@@ -15,7 +15,8 @@ function NewSubject(props){
         title:''
     })
 
-    const [createSubject, {error}] = useMutation(CREATE_SUBJECT_MUTATION, {
+    // const [createSubject, {error}] = useMutation(CREATE_SUBJECT_MUTATION, {
+    const [createSubject] = useMutation(CREATE_SUBJECT_MUTATION, {
         variables: values,
         update(proxy,result){
             const data = proxy.readQuery({

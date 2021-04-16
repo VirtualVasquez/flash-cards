@@ -1,17 +1,18 @@
-import React, {useContext} from 'react';
+import React from 'react';
+// import React, {useContext} from 'react';
 import {useQuery} from '@apollo/client';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
-import {AuthContext} from '../context/auth'
+// import {AuthContext} from '../context/auth'
 import NewSubject from './NewSubject'
 import SubjectCard from './SubjectCard';
 import Nav from './Nav';
 import {FETCH_SUBJECTS_QUERY} from '../util/graphql';
 
 function Dashboard(){
-    const {user} = useContext(AuthContext)
+    // const {user} = useContext(AuthContext)
     const {loading, data:{getSubjects:subjects} = {}} = useQuery(FETCH_SUBJECTS_QUERY);
 
     if(subjects){
