@@ -28,7 +28,7 @@ function Dashboard(){
                     <h1>Loading Subjects...</h1>
                 ) : (
                     subjects && subjects.map(subject=>(
-                        <SubjectCard subject={subject}/>
+                        <SubjectCard subject={subject} key={subject.id}/>
                     ))
                 )}
             </Row>

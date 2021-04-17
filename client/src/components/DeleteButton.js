@@ -18,9 +18,10 @@ function DeleteButton({subjectId, flashCardId, callback}){
                 const data = proxy.readQuery({
                     query: FETCH_SUBJECTS_QUERY
                 })
-                //TODO: remove post from cache
-                data.getSubjects = data.getSubjects.filter((s) => s.id !== subjectId)
-                proxy.writeQuery({query:FETCH_SUBJECTS_QUERY, data})
+                let newData = [...data.getSubjects]
+                newData = newData.filter((s) => s.id !== subjectId)
+                proxy.writeQuery({query:FETCH_SUBJECTS_QUERY, newData})
+                window.location.reload();
             }
             if (callback) callback();
         },
@@ -39,6 +40,7 @@ function DeleteButton({subjectId, flashCardId, callback}){
                     e.preventDefault();
                     console.log(JSON.stringify(mutationError, null, 2));
                     deleteSubjectOrFlashCard();
+
                 }}
             >
               <Button type="submit">Yes</Button>
