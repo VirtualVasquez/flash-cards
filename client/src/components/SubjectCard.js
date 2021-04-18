@@ -30,7 +30,12 @@ function Subject({
                 </Card.Header>
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
-                    <Button variant="primary">Start Quiz</Button>
+                    <Button 
+                        variant="primary"
+                        as={Link}
+                        to={`/quiz/${id}`}
+                        id={id}
+                        >Start Quiz</Button>
                 </Card.Body>
             </Card>
         </Col>

@@ -9,6 +9,8 @@ import ListGroup from 'react-bootstrap/ListGroup'
 
 import Nav from '../../components/Nav'
 import DeleteButton from '../../components/DeleteButton';
+import {FETCH_SUBJECT_QUERY} from '../../util/graphql';
+
 
 function SubjectForm(props){
     const subjectId=props.match.params.subjectId;
@@ -116,23 +118,6 @@ const SUBMIT_FLASHCARD_MUTATION = gql`
     mutation($subjectId:ID!, $question: String!, $answer: String!){
         createFlashCard(subjectId:$subjectId, question: $question, answer: $answer){
             id
-            flashCards{
-                id
-                question
-                answer
-            }
-            flashCardCount
-        }
-    }
-`
-
-const FETCH_SUBJECT_QUERY = gql`
-    query($subjectId: ID!){
-        getSubject(subjectId: $subjectId){
-            id
-            title
-            createdAt
-            username
             flashCards{
                 id
                 question

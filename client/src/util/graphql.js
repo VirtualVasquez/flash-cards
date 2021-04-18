@@ -7,3 +7,20 @@ export const FETCH_SUBJECTS_QUERY = gql`
     }
 }
 `
+
+export const FETCH_SUBJECT_QUERY = gql`
+query($subjectId: ID!){
+    getSubject(subjectId: $subjectId){
+        id
+        title
+        createdAt
+        username
+        flashCards{
+            id
+            question
+            answer
+        }
+        flashCardCount
+    }
+}
+`

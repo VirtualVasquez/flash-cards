@@ -20,6 +20,7 @@ function App() {
           <Route exact path="/" component={Home}/>
           <Route exact path="/quiz" component={Quiz}/>
           <Route exact path="/subjects/:subjectId" component={SubjectForm}/>
+          <Route exact path="/quiz/:subjectId" component={Quiz}/>
         </Container>
       </Router>
     </AuthProvider>
