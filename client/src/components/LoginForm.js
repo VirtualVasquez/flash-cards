@@ -12,7 +12,7 @@ import RegisterForm from './RegisterForm'
 import {AuthContext} from '../context/auth'
 import {useForm} from '../util/hooks'
 
-function LoginForm(props){
+function LoginForm(){
     const context = useContext(AuthContext);
     const [showCreateAccount, setShowCreateAccount] = React.useState(false);//for modal
     const [errors, setErrors] = useState({});
@@ -38,14 +38,12 @@ function LoginForm(props){
     }
 
     return(
-        <Container style={{
-            minHeight: "100%",
-            // minHeight: "100vh",
-            display: "flex",
-            alignItems: "center"}}>
+        <Container className="wrapper">
         <Jumbotron className="text-center" >
             <h1>Flash Cards</h1>
-            
+            <hr className="solid"></hr>
+            <br></br>
+            <br></br>
             <Form onSubmit={onSubmit} noValidate>                
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={{span:1, offset:3}}>Username</Form.Label>
@@ -60,7 +58,6 @@ function LoginForm(props){
                         />
                     </Col>
                 </Form.Group>
-
                 <Form.Group as={Row} controlId="formHorizontalPassword">
                     <Form.Label column sm={{span:1, offset:3}}>Password</Form.Label>
                     <Col sm={5}>
@@ -74,14 +71,11 @@ function LoginForm(props){
                         />
                     </Col>
                 </Form.Group>
-
+                <br></br>
                 <Form.Group as={Row}>
-                    <Col sm={{span: 3, offset:3}}>
+                    <Col sm={{span:6, offset:3}}>
                         <Button className="login-form-button" type="submit" variant="primary">Login</Button>
-                    </Col>
-                    <Col sm={3}>
                         <Button className="login-form-button" variant="success" onClick={() => setShowCreateAccount(true)}>Create Account</Button>
-
                         <RegisterForm 
                             show={showCreateAccount}
                             onHide={() => setShowCreateAccount(false)}
@@ -101,6 +95,9 @@ function LoginForm(props){
                 )}
 
             </Form>
+            <br></br>
+            <br></br>
+
         </Jumbotron>
         </Container>
     )
