@@ -64,7 +64,7 @@ function LoginForm(){
                         <Form.Control 
                             type="password" 
                             name="password"
-                            placeholder="Password" 
+                            placeholder="Enter password" 
                             value={values.password}
                             error={errors.password ? true : false}
                             onChange={onChange}

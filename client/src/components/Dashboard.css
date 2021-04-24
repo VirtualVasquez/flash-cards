@@ -1,0 +1,11 @@
+.row{
+    margin:2em;
+}
+
+#new-subject{
+    position:fixed;
+    font-size: 2em;
+    margin: 2em;
+    bottom: 0;
+    z-index: 1;
+}

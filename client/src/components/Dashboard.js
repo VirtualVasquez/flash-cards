@@ -9,6 +9,8 @@ import NewSubject from './NewSubject'
 import SubjectCard from './SubjectCard';
 import Nav from './Nav';
 import {FETCH_SUBJECTS_QUERY} from '../util/graphql';
+import './Dashboard.css';
+
 
 function Dashboard(){
     const {user} = useContext(AuthContext)
@@ -23,7 +25,7 @@ function Dashboard(){
     return(
         <Container fluid>
             <Nav/>
-            <Row  style={{margin:"20px"}}>
+            <Row>
             {loading ? (
                     <h1>Loading Subjects...</h1>
                 ) : (
@@ -35,12 +37,8 @@ function Dashboard(){
             <Row className="justify-content-center">
                 <Button  
                     variant="success"
+                    id="new-subject"
                     onClick={()=>setShowCreateSubject(true)} 
-                    style={{
-                        float:"right", 
-                        fontSize:"2em",
-                        bottom:"0",
-                        margin: "2em"}}
                 >
                     + Create New Subject
                 </Button>
