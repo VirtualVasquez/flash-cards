@@ -7,6 +7,8 @@ import {PencilSquare, Trash} from 'react-bootstrap-icons'
 
 import {AuthContext} from '../context/auth'
 import DeleteButton from './DeleteButton';
+import './SubjectCard.css';
+
 
 function Subject({
     subject:{title, createdAt, id, username, flashCardCount}
@@ -15,7 +17,7 @@ function Subject({
 
     return(
         <Col sm="4" md="3">
-            <Card className="text-center">
+            <Card className="text-center subject-card">
                 <Card.Header>
                     <Button 
                         variant="secondary"
