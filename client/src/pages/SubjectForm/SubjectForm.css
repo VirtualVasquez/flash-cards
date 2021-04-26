@@ -1,0 +1,29 @@
+#subject-form-header{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 1em;
+}
+#add-flashcard{
+    padding: 1em;
+    margin: 1em;
+    border: rgb(134, 134, 134) solid 1px;
+}
+form > h2{
+    text-align: center;
+}
+
+.subject-form-card{
+    margin-top: 1em;
+    border: rgb(134, 134, 134) solid 1px !important;
+}
+
+.list-group-item{
+    border-color: rgb(0, 132, 255) !important;
+}
+
+#lg-1{
+    text-align:right;
+    border-color: #db1e57 !important;
+}

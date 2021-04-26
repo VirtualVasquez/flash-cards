@@ -10,6 +10,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import Nav from '../../components/Nav'
 import DeleteButton from '../../components/DeleteButton';
 import {FETCH_SUBJECT_QUERY} from '../../util/graphql';
+import './SubjectForm.css';
 
 
 function SubjectForm(props){
@@ -46,20 +47,17 @@ function SubjectForm(props){
         <Container fluid>
         <Nav/>
         <Container >
-        <Row>
+        <Row id="subject-form-header">
             <h1>{title}</h1>
             <DeleteButton subjectId={id} callback={deleteSubjectCallback}/>
         </Row>
-        <Form 
+        <Form id="add-flashcard"
             onSubmit={e => {
                 e.preventDefault();
                 submitFlashCard();
             }}
-            style={{
-                border: "solid 1px black",
-                padding: "1em",
-                margin: "1em"}}>
-            <p>Add FlashCard</p>
+            >
+            <h2>Add FlashCard</h2>
             <Form.Group controlId="formQuestion">
             <Form.Label>Question</Form.Label>
                 <Form.Control 
@@ -94,10 +92,11 @@ function SubjectForm(props){
             
         <Container>
         {flashCards.map((flashcard, index) => (
-                <Card key={flashcard.id} style={{marginBottom:"10px"}}>
+                <Card key={flashcard.id} className="subject-form-card">
                     {/* <Card.Header>Question #{index+1}</Card.Header> */}
                     <ListGroup variant="flush">
-                        <ListGroup.Item><strong>Question #{index+1}</strong> <DeleteButton subjectId={id} flashCardId={flashcard.id}/></ListGroup.Item>
+                        <ListGroup.Item id="lg-1"><DeleteButton subjectId={id} flashCardId={flashcard.id}/></ListGroup.Item>
+                        <ListGroup.Item><strong>Question #{index+1}</strong> </ListGroup.Item>
                         <ListGroup.Item>{flashcard.question}</ListGroup.Item>
                         <ListGroup.Item><strong>Answer</strong></ListGroup.Item>
                         <ListGroup.Item>{flashcard.answer}</ListGroup.Item>
