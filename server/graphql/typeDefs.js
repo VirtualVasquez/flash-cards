@@ -36,6 +36,7 @@ const typeDefs = gql`
     }
     type Query{
         getSubjects: [Subject]
+        getUserSubjects(username: String!): [Subject]
         getSubject(subjectId: ID!): Subject
     }
     type Mutation{

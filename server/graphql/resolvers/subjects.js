@@ -24,6 +24,14 @@ module.exports = {
             } catch (err){ 
                 throw new Error(err)
             }
+        },
+        async getUserSubjects(_, {username}){
+            try{
+                const subjects = await Subject.find(username).sort({createdAt: -1})
+                return subjects
+            }catch(err){
+                throw new Error(err)
+            }
         }
     },
     // need to review context and how it's used/structured
