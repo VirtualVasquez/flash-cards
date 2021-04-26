@@ -1,0 +1,29 @@
+#quiz-card > .row{
+    justify-content: center;;
+}
+#results > .row{
+    justify-content: center;
+}
+
+#quiz-card > h1{
+    font-size: 4em;
+}
+
+#results > h1{
+    font-size: 4em;
+}
+
+#quiz-card > .row > div > .btn {
+    font-size: 2em;
+    margin: 0 2em 0 2em;
+}
+
+#quiz-card > .row > div > div > .btn {
+    font-size: 2em;
+    margin: 0 2em 0 2em;
+}
+
+#results > .row > div > .btn {
+    font-size: 2em;
+    margin: 0 2em 0 2em;
+}

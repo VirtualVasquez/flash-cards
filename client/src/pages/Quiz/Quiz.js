@@ -46,22 +46,31 @@ function Quiz(props){
     }
 
     return(
-        <Container fluid>
+        <Container fluid className="wrapper">
             <Nav/>
-            <Container id="quiz-container">
             {!showResult ? (            
                 <Jumbotron className="text-center" id="quiz-card">
                 <h1>{flashCards[index].question}</h1>
-                <Row className="text-center" id="quiz-button-panel" style={{justifyContent:"center"}}>
+                <Row className="text-center" id="quiz-button-panel">
                     {!showA ? (
+                        <div>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
                         <Button variant="primary" onClick={()=>setShowA(true)}>Reveal Answer</Button>
-                        
+                        </div>
                         ) : (
                             <div>
                                 <h2><strong>{flashCards[index].answer}</strong></h2>
+                                <br></br>
+                                <br></br>
+                                <div>
                                 <p>Did you get it right?</p>
-                                <Button onClick={() => nextCard(1)}>Yes</Button>
-                                <Button onClick={() => nextCard(0)} variant="secondary">No</Button>
+                                <Button variant="success" onClick={() => nextCard(1)}>Yes</Button>
+                                <Button variant="danger" onClick={() => nextCard(0)}>No</Button>
+                                </div>
                             </div>
                             )
                     }
@@ -70,12 +79,20 @@ function Quiz(props){
 
                 <Jumbotron className="text-center" id="results">
                     <h1>You got {correct} out of {flashCardCount}.</h1>
-                    <Button onClick={() => reset()}>Try again</Button>
-                    <Button name='home' as={Link} to='/'>Go Home</Button>
+                    <Row className="text-center">
+                        <div>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <Button onClick={() => reset()}>Try again</Button>
+                            <Button name='home' as={Link} to='/'>Go Home</Button>
+                        </div>
+                    </Row>
+
                 </Jumbotron>
             )}
         
-            </Container>
         </Container>
 
 
