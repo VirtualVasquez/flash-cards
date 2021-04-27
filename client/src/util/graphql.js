@@ -24,3 +24,20 @@ query($subjectId: ID!){
     }
 }
 `
+
+export const FETCH_USER_SUBJECTS_QUERY = gql`
+query($username: String!){
+    getUserSubjects(username: $username){
+        id
+        title
+        createdAt
+        username
+        flashCards{
+            id
+            question
+            answer
+        }
+        flashCardCount
+    }
+}
+`

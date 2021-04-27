@@ -9,16 +9,19 @@ import NewSubject from './NewSubject'
 import SubjectCard from './SubjectCard';
 import Nav from './Nav';
 import {FETCH_SUBJECTS_QUERY} from '../util/graphql';
+import {FETCH_USER_SUBJECTS_QUERY} from '../util/graphql';
 import './Dashboard.css';
 
 
 function Dashboard(){
     const {user} = useContext(AuthContext)
-    const {loading, data:{getSubjects:subjects} = {}} = useQuery(FETCH_SUBJECTS_QUERY);
+    const username = user.username;
+    // const {loading, data:{getSubjects:subjects} = {}} = useQuery(FETCH_SUBJECTS_QUERY);
+    const {loading, error, data:{getUserSubjects:subjects} = {}} = useQuery(FETCH_USER_SUBJECTS_QUERY,{variables:{username}});
+    console.log(JSON.stringify(error, null, 2))
 
-    if(subjects){
-        console.log(subjects)
-    }
+    subjects ? console.log(subjects) : console.log("no subjects retrieved")
+
     const [showCreateSubject, setShowCreateSubject] = React.useState(false);//for modal
     const handleClose = () => setShowCreateSubject(false);
 
