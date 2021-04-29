@@ -27,7 +27,7 @@ module.exports = {
         },
         async getUserSubjects(_, {subjectUsername}){
             try{
-                const subjects = await Subject.find({username: {subjectUsername}}).sort({createdAt: -1})
+                const subjects = await Subject.find({username: subjectUsername}).sort({createdAt: -1})
                 return subjects
             }catch(err){
                 throw new Error(err)
