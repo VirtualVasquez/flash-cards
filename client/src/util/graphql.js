@@ -26,8 +26,8 @@ query($subjectId: ID!){
 `
 
 export const FETCH_USER_SUBJECTS_QUERY = gql`
-query($username: String!){
-    getUserSubjects(username: $username){
+query($subjectUsername: String!){
+    getUserSubjects(subjectUsername: $subjectUsername){
         id
         title
         createdAt

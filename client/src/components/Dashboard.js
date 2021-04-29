@@ -15,9 +15,10 @@ import './Dashboard.css';
 
 function Dashboard(){
     const {user} = useContext(AuthContext)
-    const username = user.username;
+    const subjectUsername = user.username;
+    console.log(subjectUsername)
     // const {loading, data:{getSubjects:subjects} = {}} = useQuery(FETCH_SUBJECTS_QUERY);
-    const {loading, error, data:{getUserSubjects:subjects} = {}} = useQuery(FETCH_USER_SUBJECTS_QUERY,{variables:{username}});
+    const {loading, error, data:{getUserSubjects:subjects} = {}} = useQuery(FETCH_USER_SUBJECTS_QUERY,{variables:{subjectUsername: subjectUsername}});
     console.log(JSON.stringify(error, null, 2))
 
     subjects ? console.log(subjects) : console.log("no subjects retrieved")
