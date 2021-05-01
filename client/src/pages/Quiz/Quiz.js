@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {useQuery, useMutation} from '@apollo/client';
+import {useQuery} from '@apollo/client';
 
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
@@ -25,13 +25,13 @@ function Quiz(props){
 
     if(error) return `Error! ${error.message}`;
 
-    const {id, title, username, createdAt, flashCards, flashCardCount } = data.getSubject;
+    const {flashCards, flashCardCount } = data.getSubject;
 
     function nextCard(props){
-        props == 1 ? setCorrect(correct + 1) : setWrong(wrong + 1);
+        props === 1 ? setCorrect(correct + 1) : setWrong(wrong + 1);
         setShowA(false);
 
-        if(flashCardCount == index+1){
+        if(flashCardCount === index+1){
             return setShowResult(true)
         }
         setIndex(index + 1)

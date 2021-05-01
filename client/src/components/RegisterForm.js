@@ -27,7 +27,7 @@ function RegisterForm(props){
         update(_, {data:{register:userData}}){
             console.log(userData);
             context.login(userData)
-            {props.setShowCreateAccount(false)}//hide modal after successful user register
+            props.setShowCreateAccount(false)//hide modal after successful user register
         },
         onError(err){
             setErrors(err.graphQLErrors[0].extensions.exception.errors)

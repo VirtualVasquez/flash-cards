@@ -9,7 +9,7 @@ import Nav from 'react-bootstrap/nav'
 
 
 function HomeNav(){
-    const {user, logout} = useContext(AuthContext);
+    const {logout} = useContext(AuthContext);
 
     return(
         <Navbar bg="dark" variant="dark" expand="xs">

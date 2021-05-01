@@ -11,6 +11,7 @@ import Nav from '../../components/Nav'
 import DeleteButton from '../../components/DeleteButton';
 import {FETCH_SUBJECT_QUERY} from '../../util/graphql';
 import './SubjectForm.css';
+import { WindowSidebar } from 'react-bootstrap-icons';
 
 
 function SubjectForm(props){
@@ -37,10 +38,11 @@ function SubjectForm(props){
     if(loading) return 'Loading...';
     if(error) return `Error! ${error.message}`;
 
-    const {id, title, username, createdAt, flashCards, flashCardCount } = data.getSubject;
+    const {id, title, flashCards} = data.getSubject;
 
     function deleteSubjectCallback() {
         props.history.push('/');
+        window.location.reload();
     }
 
     return (

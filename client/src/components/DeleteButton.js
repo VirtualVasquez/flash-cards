@@ -11,7 +11,7 @@ function DeleteButton({subjectId, flashCardId, callback}){
 
     const mutation = flashCardId ? DELETE_FLASHCARD_MUTATION : DELETE_SUBJECT_MUTATION;
 
-    const [deleteSubjectOrFlashCard, {loading:mutationLoading, error:mutationError}] = useMutation(mutation, {
+    const [deleteSubjectOrFlashCard, { error:mutationError}] = useMutation(mutation, {
         update(proxy){
             document.body.click()
             if(!flashCardId){
@@ -21,7 +21,6 @@ function DeleteButton({subjectId, flashCardId, callback}){
                 let newData = [...data.getSubjects]
                 newData = newData.filter((s) => s.id !== subjectId)
                 proxy.writeQuery({query:FETCH_SUBJECTS_QUERY, newData})
-                window.location.reload();
             }
             if (callback) callback();
         },
